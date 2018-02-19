@@ -1,0 +1,2 @@
+all:
+	g++ task_2.cpp operations.cpp -o output
