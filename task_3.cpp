@@ -1,37 +1,39 @@
 #include <iostream>
+#include <vector>
+#include <algorithm>
 
 using namespace std;
 
-bool ifTouch = true;
-bool ifOutside = false;
+int checkPoint(pair <int, int> center, pair <int, int> c, int r){
+  if (((c.first - center.first) * (c.first - center.first) + (c.second - center.second) * (c.second - center.second)) < r * r) {
+        return 0;
+    } else if (((c.first - center.first) * (c.first - center.first) + (c.second - center.second) * (c.second - center.second)) == r * r) {
+        return 1;
+      } else return 2;
+}
 
-void checkPoint(int xc, int yc, int x, int y, int r){
-  if (((x - xc) * (x - xc) + (y - yc) * (y - yc)) < r * r) {
-        ifTouch = false;
-    } else if (((x - xc) * (x - xc) + (y - yc) * (y - yc)) != r * r) {
-        ifOutside = true;
-      }
+int checkFigure(vector<int> v){
+  if (find(v.begin(), v.end(), 2) != v.end()) return 2;
+  if (find(v.begin(), v.end(), 0) != v.end()) return 0;
+  return 1;
 }
 
 int main() {
-  cout << "enter center and radius" << '\n';
-  cout << "center (2 inputs)" << '\n';
-  int xc; cin >> xc;
-  int yc; cin >> yc;
+  cout << "enter center and radius" << '\n' << "center (2 inputs)" << '\n';
+
+  pair <int, int> center;
+  cin >> center.first; cin >> center.second;
   cout << "radius (1 input)" << '\n';
   int radius; cin >> radius;
-  int type;
+  vector<int> v;
 
   for (int i = 0; i<4; i++){
     cout << "enter point" << '\n';
-    int x; cin >> x;
-    int y; cin >> y;
-    checkPoint(xc, yc, x, y, radius);
+    pair <int, int> coordinate;
+    cin >> coordinate.first; cin >> coordinate.second;
+    v.push_back(checkPoint(center, coordinate, radius));
   }
-
-  if (ifTouch) type = 1;
-  if (ifOutside) type = 2;
-  switch (type) {
+  switch (checkFigure(v)) {
     case 0:{
       cout << "INSIDE" << endl;
     }

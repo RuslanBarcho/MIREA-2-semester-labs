@@ -3,9 +3,9 @@
 #include "functions.h"
 
 using namespace std;
-vector <int> arr;
 
 int main() {
+  vector <int> arr;
   //input
   cout << "/* enter number of elements */" << '\n';
   int q; cin>>q;
