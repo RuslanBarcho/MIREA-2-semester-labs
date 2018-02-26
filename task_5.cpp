@@ -28,7 +28,7 @@ public:
   }
 };
 
-class Rectangle: public Figure {
+class Polygon: public Figure {
 private:
   int checkPoint(pair <int, int> center, pair <int, int> c, int r){
     if (((c.first - center.first) * (c.first - center.first) + (c.second - center.second) * (c.second - center.second)) < r * r) {
@@ -40,8 +40,8 @@ private:
 public:
   int pointAmount;
   vector<int> pointsStatus;
-  Rectangle(){
-    name = "rectangle";
+  Polygon(){
+    name = "Polygon";
     setPointAmount();
   }
   void setPointAmount(){
@@ -52,9 +52,9 @@ public:
   int status(pair <int, int> circleCenter, int rad){
     for (int i = 0; i<pointAmount; i++){
       cout << "Введите вершину" << '\n';
-      pair <int, int> rectangleCoordinate;
-      cin >> rectangleCoordinate.first; cin >> rectangleCoordinate.second;
-      pointsStatus.push_back(checkPoint(circleCenter, rectangleCoordinate, rad));
+      pair <int, int> polygonCoordinate;
+      cin >> polygonCoordinate.first; cin >> polygonCoordinate.second;
+      pointsStatus.push_back(checkPoint(circleCenter, polygonCoordinate, rad));
     }
     if (find(pointsStatus.begin(), pointsStatus.end(), 2) != pointsStatus.end()) return 2;
     if (find(pointsStatus.begin(), pointsStatus.end(), 0) != pointsStatus.end()) return 0;
@@ -64,8 +64,8 @@ public:
 
 int main() {
   Circle circle;
-  Rectangle rectangle;
-  switch (rectangle.status(circle.center, circle.rad)) {
+  Polygon polygon;
+  switch (polygon.status(circle.center, circle.rad)) {
     case 0:{
       cout << "Многоугольник лежит внутри" << endl;
     }
