@@ -4,26 +4,19 @@
 
 using namespace std;
 
-void showArray(vector<int> array){
-  for(int i = 0; i < array.size(); i++) cout << array[i] << ' ';
-  cout<<"\n";
-}
-
-int max(vector<int> array, int start, int(*func)(int, int)){
-  int n = start;
+template <class T, class S>
+T max(vector<T> array, S start, T(*function)(T, S)){
+  S n = start;
   for (int i=0; i<array.size(); i++){
-    n=func(array[i], n);
+    n=function(array[i], n);
   }
   return n;
 };
 
-int maxPair(int op1, int op2){
-  if (op1>op2){
-    return op1;
-  } else {
-    return op2;
-  }
-};
+void showArray(vector<int> array){
+  for(int i = 0; i < array.size(); i++) cout << array[i] << ' ';
+  cout<<"\n";
+}
 
 int main() {
   vector <int> arr;
@@ -35,6 +28,16 @@ int main() {
     arr.push_back(10 + rand() % (50 - 10 + 1));
   }
   showArray(arr);
-  cout << max(arr, 0, maxPair) << '\n';
+
+  int (*f)(int, int) = [] (int op1,int  op2)
+  {
+    if (op1>op2){
+      return op1;
+    } else {
+      return op2;
+    }
+  };
+
+  cout << max(arr, 0, f) << '\n';
   return 0;
 }
