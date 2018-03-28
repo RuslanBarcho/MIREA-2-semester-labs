@@ -1,10 +1,9 @@
-#inclu#include <iostream>
+#include <iostream>
 #include <vector>
 #include <algorithm>
 #include "classes.h"
 
 using namespace std;
-
 
 int Polygon::checkPoint(pair <int, int> center, pair <int, int> c, int r){
     if (((c.first - center.first) * (c.first - center.first) + (c.second - center.second) * (c.second - center.second)) < r * r) {
@@ -15,6 +14,7 @@ int Polygon::checkPoint(pair <int, int> center, pair <int, int> c, int r){
   };
 
   Polygon::Polygon(){
+    cout<<"Сработал конструктор класса Polygon \n";
     name = "Polygon";
     setPointAmount();
   }
@@ -37,3 +37,4 @@ int Polygon::checkPoint(pair <int, int> center, pair <int, int> c, int r){
     if (find(pointsStatus.begin(), pointsStatus.end(), 0) != pointsStatus.end()) return 0;
     return 1;
   }
+

@@ -1,0 +1,2 @@
+all:
+	g++ task_5.cpp polygon.cpp circle.cpp -o output
