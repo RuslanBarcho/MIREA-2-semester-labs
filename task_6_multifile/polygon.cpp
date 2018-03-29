@@ -38,3 +38,7 @@ int Polygon::checkPoint(pair <int, int> center, pair <int, int> c, int r){
     return 1;
   }
 
+  Polygon::~Polygon(){
+    cout<<"Сработал деструктор класса Polygon \n";
+  }
+

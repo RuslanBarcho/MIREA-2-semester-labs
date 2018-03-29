@@ -19,3 +19,6 @@ using namespace std;
     cout << "Введите координаты центра окружности" << '\n';
     cin >> center.first; cin >> center.second;
   }
+  Circle::~Circle(){
+    cout<<"Сработал деструктор класса Circle \n";
+  }

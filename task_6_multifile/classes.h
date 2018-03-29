@@ -13,6 +13,7 @@ public:
   Polygon();
   void setPointAmount();
   int status(std::pair <int, int> circleCenter, int rad);
+  ~Polygon();
 };
 
 class Circle: public Figure {
@@ -22,4 +23,5 @@ public:
   Circle();
   void setR();
   void setCenter();
+  ~Circle();
 };
