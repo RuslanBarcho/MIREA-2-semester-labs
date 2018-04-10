@@ -2,6 +2,7 @@
 #include <vector>
 #include <algorithm>
 #include "verticle.h"
+#pragma once
 
 using namespace std;
 class Graph {

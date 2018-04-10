@@ -2,6 +2,7 @@
 #include <vector>
 #include <algorithm>
 #include "edge.h"
+#pragma once
 
 using namespace std;
 class Verticle {

@@ -5,6 +5,8 @@ Graph::Graph(){
 }
 void Graph::addEdge(){
 	Edge edge;
-	//cin >> edge.name;
-	//edges.push_back(edge);
+	cin >> edge.name;
+	edges.push_back(edge);
+}
+Graph::~Graph(){
 }
