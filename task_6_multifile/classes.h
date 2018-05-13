@@ -21,6 +21,8 @@ public:
   int rad;
   std::pair <int, int> center;
   Circle();
+  Circle(int f, int s, int r);
+  Circle(const Circle &circle);
   void setR();
   void setCenter();
   ~Circle();
