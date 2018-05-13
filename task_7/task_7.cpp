@@ -25,6 +25,12 @@ int main() {
       CASE ("output"):
           cout << graph;
         break;
+      CASE ("delete"):{
+          string toDelete;
+          cin >> toDelete;
+          graph.deleteEdge(toDelete);
+        }
+        break;
       DEFAULT:
           cout << "unknown command" << endl;
         break;

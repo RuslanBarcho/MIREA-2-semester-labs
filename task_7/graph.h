@@ -14,5 +14,6 @@ public:
 	void addEdge();
 	void addVerticle();
 	bool searchInGraph(std::string toSearch);
+	void deleteEdge(string toDelete);
 	friend ostream& operator<<(ostream& os, const Graph& graph);  
 };

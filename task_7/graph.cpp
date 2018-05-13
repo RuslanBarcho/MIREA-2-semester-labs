@@ -33,6 +33,30 @@ void Graph::addVerticle(){
 	}
 }
 
+void Graph::deleteEdge(string toDelete){
+	if (this->searchInGraph(toDelete) == true){
+		int index;
+		for (int i = 0; i < this->edges.size(); i++){
+			if (this->edges[i].name == toDelete){
+			index = i;
+			}
+		}
+		this->edges.erase(this->edges.begin() + index);
+		vector<int> toDel;
+		for (int i = 0; i < this->verticles.size(); i++){
+			if (this->verticles[i].edges.first.name == toDelete | this->verticles[i].edges.second.name == toDelete){
+			toDel.push_back(i);
+			}
+		}
+		for (int j = toDel.size() - 1; j >=0 ; j--){
+			this->verticles.erase(this->verticles.begin() + toDel[j]);
+			cout << toDel[j];
+		}
+	} else {
+		cout << "this edge does not exist" << endl;
+	}
+}
+
 ostream& operator<<(ostream& os, const Graph& graph)  
 {  
 	os << "  ";
