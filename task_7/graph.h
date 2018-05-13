@@ -12,4 +12,7 @@ public:
 	vector <Edge> edges;
 	vector <Verticle> verticles;
 	void addEdge();
+	void addVerticle();
+	bool searchInGraph(std::string toSearch);
+	friend ostream& operator<<(ostream& os, const Graph& graph);  
 };

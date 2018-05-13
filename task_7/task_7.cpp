@@ -20,10 +20,13 @@ int main() {
           graph.addEdge();
         break;
       CASE ("add_ver"):
-          // TODO: graph.addVer();
+          graph.addVerticle();
+        break;
+      CASE ("output"):
+          cout << graph;
         break;
       DEFAULT:
-
+          cout << "unknown command" << endl;
         break;
     }
   }

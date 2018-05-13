@@ -1,2 +1,2 @@
 all:
-	g++ task_7.cpp graph.cpp edge.cpp -std=c++11 -o output
+	g++ task_7.cpp graph.cpp edge.cpp verticle.cpp -std=c++11 -o output
