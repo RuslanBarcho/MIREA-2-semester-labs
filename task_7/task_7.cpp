@@ -31,8 +31,11 @@ int main() {
           graph.deleteEdge(toDelete);
         }
         break;
-      DEFAULT:
+      DEFAULT:{
+        if (userCommand != "end"){
           cout << "unknown command" << endl;
+        }
+      }    
         break;
     }
   }
