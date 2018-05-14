@@ -8,7 +8,11 @@ void Graph::addEdge(){
 	cout << "Enter unique edge name" << endl;
 	Edge edge;
 	cin >> edge.name;
-	edges.push_back(edge);
+	if (! this->searchInGraph(edge.name)){
+		edges.push_back(edge);
+	} else {
+		cout << "Edge already exist" << endl;
+	}
 }
 
 void Graph::addVerticle(){
@@ -31,6 +35,29 @@ void Graph::addVerticle(){
 	} else {
 		cout << "one or both edges does not exist" << endl;
 	}
+}
+
+void Graph::addVerticle(string f, string b, int c){
+	if ((searchInGraph(f) == true) & (searchInGraph(b) == true)){
+		Verticle verticle;
+		Edge edgeFirst;
+		edgeFirst.name = f;
+		Edge edgeSecond;
+		edgeSecond.name = b;
+		verticle.edges.first = edgeFirst;
+		verticle.edges.second = edgeSecond;
+		verticle.direction = c;
+		this->verticles.push_back(verticle);
+	} else {
+		cout << "one or both edges does not exist" << endl;
+	}
+}
+
+void Graph::fileInput(){
+	string s;
+	int input_type = 0;
+	ifstream f("input.txt"); 
+	f >> *this;
 }
 
 void Graph::deleteEdge(string toDelete){
@@ -57,8 +84,31 @@ void Graph::deleteEdge(string toDelete){
 	}
 }
 
-ostream& operator<<(ostream& os, const Graph& graph)  
-{  
+istream& operator>>(istream& file, Graph& graph) {
+	string s;
+	while(getline(file, s)){
+		if(s == "Вершина"){
+			string t;
+			getline(file, t);
+			Edge edge;
+			edge.name = t;
+			graph.edges.push_back(edge);
+		} else if (s == "Дуга"){
+			string t;
+			string r;
+			string h;
+			int c;
+			getline(file, t);
+			getline(file, r);
+			getline(file, h);
+			c = atoi(h.c_str());
+			graph.addVerticle(t,r,c);
+		}
+	}
+	return file;
+}
+
+ostream& operator<<(ostream& os, const Graph& graph) {  
 	os << "  ";
 	for (int i = 0; i < graph.edges.size(); i++){
 		os << graph.edges[i].name << " ";
